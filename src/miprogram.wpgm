@@ -1,0 +1,13 @@
+import wollok.game.*
+import miexample.*
+
+program tekken {	
+	game.width(10)
+	game.height(8)
+	
+	game.boardGround("streetfighter3-new-generation-oro-stage.gif")
+	
+	game.addVisualCharacter(mishima)
+	
+	game.start()
+}

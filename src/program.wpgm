@@ -2,6 +2,7 @@ import wollok.game.*
 import example.*
 
 program pacman {
+	game.title("pacman")
 	
 	// límites del juego
 	game.width(14)
@@ -13,7 +14,20 @@ program pacman {
 	// personaje principal
 	game.addVisualCharacter(pacman)
 	
-	// que arranque el juego!
+	// rivales
+	const rivales = [new Rival(numero =1), new Rival(numero =2)]
+	
+	rivales.forEach { rival => 
+		game.addVisual(rival)
+		game.whenCollideDo(rival, { personaje =>
+			personaje.perderVida()
+			if (personaje.juegoTerminado()) {
+				game.stop()
+				}
+		})
+	}
+	
+	// todo tiene que estar arriba de esto para que funcione
 	game.start()
 	
 }
